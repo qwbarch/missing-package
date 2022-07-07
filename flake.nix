@@ -19,11 +19,6 @@
             src = ./.;
             inherit index-state compiler-nix-name;
 
-            modules = [{
-              packages.mingwW64.components.library.libs =
-                pkgs.lib.mkForce (with pkgs.xorg; [ glew32 ]);
-            }];
-
             # plan-sha256 = "";
             # materialized = ./materialized + "/${projectName}";
           };
