@@ -1,0 +1,46 @@
+cabal-version: 2.4
+name: missing-package
+version: 0.1.0.0
+license: MIT
+
+library
+  exposed-modules: Lib
+  hs-source-dirs: src
+  ghc-options:
+    -- -fplugin=Polysemy.Plugin
+    -O2
+    -flate-specialise
+    -fspecialise-aggressively
+    -Wall
+    -Wno-name-shadowing
+  build-depends:
+    base ^>= 4.15.1.0,
+    monomer
+
+executable missing-package
+  main-is: Main.hs
+  hs-source-dirs: app
+  ghc-options:
+    -- -fplugin=Polysemy.Plugin
+    -threaded
+    -rtsopts
+    -with-rtsopts=-N
+    -O2
+    -flate-specialise
+    -fspecialise-aggressively
+    -Wall
+    -Wno-name-shadowing
+  build-depends: base ^>= 4.15.1.0, missing-package
+
+test-suite missing-package-test
+  type: exitcode-stdio-1.0
+  main-is: Main.hs
+  hs-source-dirs: test
+  ghc-options:
+    -- -fplugin=Polysemy.Plugin
+    -threaded
+    -rtsopts
+    -with-rtsopts=-N
+    -Wall
+    -Wno-name-shadowing
+  build-depends: base ^>= 4.15.1.0, missing-package
